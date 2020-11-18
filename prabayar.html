@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Layanan</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <style>
+    /* Make the image fully responsive */
+    .carousel-inner img {
+      width: 100%;
+      height: 100%;
+    }
+
+    input[type=text] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: none;
+      border-bottom: 2px solid #ff8800;
+    }
+
+    input[type=button] {
+      padding: 12px 20px;
+      margin: 8px 10px;
+      box-sizing: border-box;
+      border: none;
+      background-color: #ff8800;
+      color: white;
+    }
+
+    input[type=radio] {
+      padding: 12px 20px;
+      margin: 10px 50px;
+      box-sizing: border-box;
+      border: none;
+    }
+
+    .lenError,
+    .paymodeError,
+    .nominalError,
+    .error {
+      color: red;
+      padding-left: 10px;
+    }
+
+    .submit {
+      width: 100%;
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    $(document).ready(function () {
+      $('.error').hide();
+      $('.lenError').hide();
+      $('.nominalError').hide();
+      $('.paymodeError').hide();
+
+      $('.submit').click(function (event) {
+        var data = $('.ID').val();
+        var len = data.length;
+        var c;
+        if (len != 12) {
+          $('.lenError').show();
+          event.preventDefault();
+        }
+        else {
+          $('.lenError').hide();
+        }
+        for (var i = 0; i < len; i++) {
+          c = data.charAt(i).charCodeAt(0);
+          if (c < 48 || c > 57) {
+            $('.error').show();
+            event.preventDefault();
+            break;
+          }
+          else {
+            $('.error').hide();
+          }
+        }
+        var data2 = $('.harga').val();
+        var len2 = data2.length;
+        if (len2 < 1) {
+          $('.nominalError').show();
+          event.preventDefault();
+        }
+        else {
+          $('.nominalError').hide();
+        }
+        var count = $('input:checked').length;
+        if (count == 0) {
+          $('.paymodeError').show();
+        }
+        else {
+          $('.paymodeError').hide();
+        }
+      });
+    })
+  </script>
+
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+    <a class="navbar-brand" href="#">
+      <img src="https://pln24.files.wordpress.com/2013/07/perusahaan_listrik_negara.png" alt="logo" style="width:40px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Daftar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact Us</a>
+        </li>
+      </ul>
+    </div>
+    <form class="form-inline" action="">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      <button class="btn btn-success" type="submit">Search</button>
+    </form>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row" style="background-color: #ff8800;">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-6">
+        <div id="demo" class="carousel slide" data-ride="carousel">
+
+          <!-- Indicators -->
+          <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+          </ul>
+
+          <!-- The slideshow -->
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="images\promo_1.jpg" alt="Promo 1">
+            </div>
+            <div class="carousel-item">
+              <img src="images\promo_2.jpg" alt="Promo 2">
+            </div>
+            <div class="carousel-item">
+              <img src="images\promo_3.jpg" alt="Promo 3">
+            </div>
+          </div>
+
+          <!-- Left and right controls -->
+          <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </a>
+          <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </a>
+        </div>
+      </div>
+      <div class="col-sm-3"></div>
+    </div>
+
+    <div class="row" style="padding: 30px;">
+      <div class="col-sm-4">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQW9w5Li8TmtFGQ9Mt7yPx1tBOQ9EJTKxbbfg&usqp=CAU"
+          height="120" width="120">
+        <h3>Prabayar</h3>
+        <p> Layanan pembayaran listrik prabayar (token listrik)</p>
+        <h6 style="color: #ff8800;">Keterangan</h6>
+        <ol style="color: #ff8800; text-align: justify;">
+          <li> Produk Listrik PLN tidak tersedia pada jam cut off/maintenance (23.00 - 01.00).</li>
+          <li> Proses verifikasi transaksi maksimal 2x24 jam hari kerja.</li>
+          <li> Harap cek limit kWh anda sebelum membeli token listrik</li>
+        </ol>
+      </div>
+
+      <div class="col-sm-8">
+        <form>
+          <label for="ID"><b>Nomor Meter / ID Pelanggan :</b></label>
+          <input type="text" id="ID" name="ID" class="ID">
+          <p class="error">* ID hanya boleh berupa angka</p>
+          <p class="lenError">* ID harus berisi 12 angka</p>
+        </form>
+
+        <form>
+          <p><b>Nominal :</b></p>
+          <input type="button" onclick="document.getElementById('jumlah').value='Rp22.500'" value="Rp20.000">
+          <input type="button" onclick="document.getElementById('jumlah').value='Rp52.500'" value="Rp50.000">
+          <input type="button" onclick="document.getElementById('jumlah').value='Rp102.500'" value="Rp100.000">
+          <input type="button" onclick="document.getElementById('jumlah').value='Rp202.500'" value="Rp200.000">
+          <input type="button" onclick="document.getElementById('jumlah').value='Rp502.500'" value="Rp500.000">
+          <input type="button" onclick="document.getElementById('jumlah').value='Rp1.002.500'" value="Rp1.000.000">
+        </form>
+        <p class="nominalError">* Pilih nominal pembelian</p>
+
+        <form>
+          <p><b>Pilih pembayaran :</b></p>
+          <input type="radio" name="paymode" class="paymode" id="gopay" value="Gopay">
+          <label for="gopay"><img src="images\gopay.png" alt="Gopay"></label><br>
+          <input type="radio" name="paymode" class="paymode" id="ovo" value="ovo">
+          <label for="ovo"><img src="images\ovo.png" alt="Ovo"></label><br>
+          <input type="radio" name="paymode" class="paymode" id="banking" value="banking">
+          <label for="banking"><img src="images\banking.png" alt="Banking"></label><br>
+          <input type="radio" name="paymode" class="paymode" id="credit" value="credit">
+          <label for="credit"><img src="images\credit_card.png" alt="Credit card"></label><br>
+          <p class="paymodeError">* Pilih satu opsi pembayaran</p>
+        </form>
+
+        <p><b>Harga : </b><input class="harga" type="text" style="font-size: 30px; " id="jumlah" readonly></input></p>
+
+        <input class="submit" type="submit" value="Beli sekarang">
+      </div>
+    </div>
+  </div>
+  <div class="jumbotron text-center" style="margin-bottom:0" color="blue">
+    <p>Contact Us</p>
+    <p>
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-whatsapp"></i>
+      <i class="fab fa-facebook-f"></i>
+    </p>
+  </div>
+
+
+
+</body>
+
+</html>
